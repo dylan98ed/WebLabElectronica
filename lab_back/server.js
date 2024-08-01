@@ -57,5 +57,35 @@ app.get('/api/proyectores', (req, res) => {
 
 });
 
+app.get('/api/notebooks', (req, res) => {
+
+  const query = "SELECT * FROM notebooks"
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error ejecutando la consulta: ', err);
+      res.status(500).send('Error ejecutando la consulta');
+      return;
+    }
+    res.json(results);
+  });
+
+});
+
+app.get('/api/libros', (req, res) => {
+
+  const query = "SELECT * FROM libros"
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error ejecutando la consulta: ', err);
+      res.status(500).send('Error ejecutando la consulta');
+      return;
+    }
+    res.json(results);
+  });
+
+});
+
 
 app.listen(PORT, () => console.log(`Servidor escuchando http://localhost:${PORT}`))
